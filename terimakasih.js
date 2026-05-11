@@ -1,41 +1,45 @@
-// Mencari elemen audio berdasarkan ID 'bgm-audio' dan menyimpannya ke variabel 'audio'
+// Mencari elemen audio dan tombol
 var audio = document.getElementById("bgm-audio");
-
-// Mencari elemen tombol berdasarkan ID 'btn-audio' dan menyimpannya ke variabel 'btnAudio'
 var btnAudio = document.getElementById("btn-audio");
 
-// Membuat fungsi bernama 'toggleMusic' yang bertugas mengganti status musik (main/berhenti)
+// Fungsi untuk mengganti status musik (main/berhenti)
 function toggleMusic(event) {
-    // Jika ada event klik, hentikan penyebaran event agar tidak memicu klik pada elemen induk 
-    // (seperti body)
-    if (event) event.stopPropagation(); 
+    // Mencegah double-trigger di perangkat mobile yang membaca touch dan click sekaligus
+    if (event) {
+        event.preventDefault(); 
+        event.stopPropagation(); 
+    }
     
-    // Mengecek apakah audio sedang dalam posisi berhenti (paused)
     if (audio.paused) {
-        // Jika sedang berhenti, maka jalankan musiknya
-        audio.play();
-        // Ubah teks tombol menjadi ikon Pause dan tulisan "Pause"
-        btnAudio.innerHTML = "&#x23F8; Pause";
+        // Menggunakan Promise untuk menghindari error di console jika diblokir browser HP
+        audio.play().then(() => {
+            btnAudio.innerHTML = "&#x23F8; Pause";
+        }).catch((error) => {
+            console.log("Pemutaran audio diblokir oleh browser: ", error);
+            alert("Silakan tap sekali lagi untuk memutar musik.");
+        });
     } else {
-        // Jika sedang berputar, maka hentikan musiknya
         audio.pause();
-        // Ubah teks tombol menjadi ikon Play dan tulisan "Play"
         btnAudio.innerHTML = "&#9654; Play";
     }
 }
 
-// Memberikan instruksi agar saat 'btnAudio' diklik, fungsi 'toggleMusic' dijalankan
+// Menambahkan pendengar untuk klik (Desktop) dan sentuhan (Mobile) pada tombol
 btnAudio.addEventListener('click', toggleMusic);
+btnAudio.addEventListener('touchstart', toggleMusic, { passive: false });
 
-// Menambahkan pendengar klik pada seluruh halaman (body) sebagai trik melewati aturan 
-// autoplay browser
-document.body.addEventListener('click', function() {
-    // Jika audio masih belum berjalan saat pengguna pertama kali klik area mana saja di layar
+// Trik melewati aturan autoplay browser (berlaku untuk klik dan tap di mana saja)
+const startAudioContext = function() {
     if (audio.paused) {
-        // Jalankan audio secara otomatis
-        audio.play();
-        // Pastikan teks pada tombol sinkron menjadi "Pause"
-        btnAudio.innerHTML = "&#x23F8; Pause";
+        audio.play().then(() => {
+            btnAudio.innerHTML = "&#x23F8; Pause";
+        }).catch((e) => console.log("Autoplay dicegah:", e));
     }
-// Aturan '{ once: true }' memastikan fungsi ini hanya berjalan sekali saja pada klik pertama
-}, { once: true });
+    // Hapus event listener setelah berhasil agar tidak membebani memori
+    document.body.removeEventListener('click', startAudioContext);
+    document.body.removeEventListener('touchstart', startAudioContext);
+};
+
+// Pasang pendengar di seluruh halaman
+document.body.addEventListener('click', startAudioContext);
+document.body.addEventListener('touchstart', startAudioContext, { passive: true });
