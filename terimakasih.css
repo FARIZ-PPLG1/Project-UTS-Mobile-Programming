@@ -9,7 +9,6 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* Hapus kode background: url(...) dan kawan-kawannya di sini */
     margin: 0;
     padding: 0;
     color: var(--text-light);
