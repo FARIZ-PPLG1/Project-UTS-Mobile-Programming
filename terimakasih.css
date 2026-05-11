@@ -1,0 +1,197 @@
+:root {
+    --primary: #3498db;
+    --h2: rgb(255, 255, 255);
+    --bg-dark: #061320; 
+    --text-light: #ecf0f1;
+    --text-muted: #bdc3c7;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Hapus kode background: url(...) dan kawan-kawannya di sini */
+    margin: 0;
+    padding: 0;
+    color: var(--text-light);
+}
+
+/* TAMBAHKAN KODE INI DI CSS KAMU */
+.bg-video {
+    position: fixed; /* Menempel di layar */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Memastikan video menutupi seluruh layar tanpa merusak rasio */
+    z-index: -1; /* Memastikan video berada di PALING BELAKANG (di bawah konten) */
+    opacity: 0.8; /* Opsional: Membuat video sedikit redup agar teks lebih terbaca */
+}
+
+header {
+    background: #2c3e50; 
+    color: var(--text-light);
+    padding: 30px 10px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+/* --- Navigasi --- */
+nav {
+    background: #141c24; 
+    padding: 15px 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* --- Container Utama --- */
+.container {
+    max-width: 750px;
+    margin: 40px auto;
+    background: transparent; 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: none; 
+    min-height: 300px;
+}
+
+/* --- Judul dengan Background Semi-Transparan --- */
+h2 {
+    color: var(--h2);
+    border-top: 3px solid var(--h2);
+    border-bottom: 3px solid var(--h2);
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.6); 
+    padding: 10px 20px; 
+    border-radius: 8px; 
+    margin-bottom: 25px;
+}
+
+h2:hover{
+    color: rgb(0, 0, 0);
+    border-top: 3px solid rgb(0, 0, 0);
+    border-bottom: 3px solid rgb(0, 0, 0);
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.6); 
+    padding: 10px 20px; 
+    border-radius: 8px; 
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+/* --- Teks Paragraf dengan Background Semi-Transparan (Dibuat Menyatu) --- */
+.container p {
+    line-height: 1.8;
+    color: var(--text-light);
+    font-size: 1.05rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    background: rgba(0, 0, 0, 0.6); 
+    padding: 10px 20px; /* Padding antar baris sedikit dikurangi */
+    margin: 0; /* Margin dihapus agar antar kotak saling menempel */
+}
+
+/* Melengkungkan sudut ATAS hanya pada paragraf pertama */
+.container p:first-of-type {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-top: 20px;
+}
+
+/* Melengkungkan sudut BAWAH hanya pada paragraf terakhir */
+.container p:last-of-type {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-bottom: 20px;
+    margin-bottom: 20px; /* Memberikan jarak dengan tombol di bawahnya */
+}
+
+/* --- Tombol Next --- */
+.btn-next {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-next:hover {
+    background: #2980b9;
+}
+
+/* --- Tombol Audio --- */
+.btn-audio {
+    background: #e67e22;
+    color: #fff;
+    padding: 10px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.btn-audio:hover {
+    background: #d35400;
+    transform: translateY(-2px);
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-bottom: 30px;
+}
+
+footer p {
+    display: inline-block;
+    color: #fff;
+    font-weight: bold;
+    font-size: 0.9rem;
+    background: #1a252f; 
+    padding: 10px 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    margin: 0;
+}
+
+/* --- Styling Gambar di Halaman Terima Kasih --- */
+.image-thankyou-wrapper {
+    margin: 20px auto 30px auto;
+    width: 100%;
+}
+
+.img-thankyou {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.text-center {
+    text-align: center;
+}

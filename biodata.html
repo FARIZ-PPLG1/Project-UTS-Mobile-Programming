@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman 2 - Biodata Pemilik</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- Gaya CSS Tambahan Khusus untuk Foto Profil --- */
+        .profile-pic-container {
+            text-align: center; /* Menengahkan gambar di dalam container */
+            margin-bottom: 30px; /* Memberikan jarak ke tabel di bawahnya */
+        }
+
+        .profile-pic {
+            width: 150px; /* Lebar foto profil */
+            height: 150px; /* Tinggi foto profil */
+            object-fit: cover; /* Pastikan gambar tidak meregang jika tidak persegi */
+            border-radius: 50%; /* Membuat gambar menjadi lingkaran sempurna */
+            border: 5px solid var(--primary); /* Memberikan border dengan warna utama */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5); /* Memberikan efek bayangan agar menonjol */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Project Website UTS</h1>
+    <p>Profil Pengembang Website</p>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="biodata.html">Biodata</a>
+    <a href="topik.html">Main Topic</a>
+</nav>
+
+<div class="container">
+    <h2>Biodata Pemilik</h2>
+    
+    <!-- MULAI PENAMBAHAN FOTO PROFIL -->
+    <div class="profile-pic-container">
+        <!-- Ganti 'img/profile.jpg' dengan path file gambar Anda -->
+        <img src="image/bebek-profil.jpg" alt="gambar bebek" class="profile-pic">
+    </div>
+    <!-- SELESAI PENAMBAHAN FOTO PROFIL -->
+
+    <table class="info-table">
+        <tr>
+            <td>Nama Lengkap</td>
+            <td>Fariz Agustian Firdaus</td>
+        </tr>
+        <tr>
+            <td>Nim</td>
+            <td>202506004</td>
+        </tr>
+        <tr>
+            <td>Nama Panggilan</td>
+            <td>Firdaus</td>
+        </tr>
+        <tr>
+            <td>Kampus</td>
+            <td>Politeknik Enjinering Indorama</td>
+        </tr>
+        <tr>
+            <td>Program Studi</td>
+            <td>Teknologi Rekayasa Mekatronika</td>
+        </tr>
+        <tr>
+            <td>Angkatan</td>
+            <td>2025</td>
+        </tr>
+        <tr>
+            <td>Hobi</td>
+            <td>Ngoding, Gaming, & Membaca</td>
+        </tr>
+    </table>
+</div>
+
+<footer>
+    <p>&copy; 2026 - Project UTS Mobile Programinng</p>
+</footer>
+
+</body>
+</html>
